@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { get, post } from 'axios'
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 
 const API_URL = 'https://wt-48cf45041ea67fe5072f21aa825fe023-0.sandbox.auth0-extend.com/ssshhhh';
@@ -35,6 +35,7 @@ class CreateMessage extends Component {
     const { token } = this.state;
     return (
       <div>
+        <label>The message will self-destroy after opened</label>
         <a href={`/readMessage/${token}`}>Secret link</a>
       </div>
     )
@@ -47,13 +48,19 @@ class CreateMessage extends Component {
     }
     return (
       <form onSubmit={(event) => this.createMessage(event)}>
-        <label>Input your secret message</label>
-        <input
+        <label className="form-components">Input your secret message</label>
+        <textarea
+          className="form-components"
+          rows="4"
+          cols="50"
           type="text"
           value={this.state.message}
           onChange={(event) => this.handleMessageChange(event.target.value)}
         />
-        <input type="submit" value="Submit" />
+        <input
+          className="form-components"
+          type="submit" value="Submit"
+        />
       </form>
     );
   }
@@ -99,7 +106,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Ssshhhh!! It's a secret</h1>
         </header>
         <Router>
           <div className="App-intro">
